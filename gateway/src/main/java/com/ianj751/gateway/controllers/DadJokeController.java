@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class DadJokeController {
     @GetMapping("/jokes")
     public ResponseEntity<DadJokeResponse> retrieveDadJoke(@RequestParam String jwt) {
-        // TODO: verify jwt, if valid continue and retrieve dad joke
+
         DadJokeClient client = new DadJokeClient();
 
         DadJokeResponse resp = client.getDadJoke("pls-gimme-jokes");

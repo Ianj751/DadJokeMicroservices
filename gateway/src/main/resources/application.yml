@@ -1,10 +1,13 @@
 spring:
   application:
     name: gateway
-
   h2:
     console:
       enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+        trace: false
   datasource:
     url: jdbc:h2:mem:dcbapp
     driver-class-name: org.h2.Driver
@@ -13,3 +16,5 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
+server:
+  port: 8080

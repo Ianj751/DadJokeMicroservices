@@ -7,10 +7,15 @@ import com.ianj751.gateway.models.AuthResponse;
 
 import com.ianj751.gateway.services.AuthenticationService;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +33,24 @@ public class AuthController {
         return ResponseEntity.ok(authService.register(request));
     }
 
-    @GetMapping("/login")
-    public ResponseEntity<AuthResponse> loginUser(@RequestBody AuthRequest request) {
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody AuthRequest request) {
+        try {
+            AuthResponse response = authService.login(request);
+            return ResponseEntity.ok(response);
+        } catch (NoSuchElementException e) {
+            // Error response format
+            return ResponseEntity
+                    .badRequest()
+                    .body(new ErrorResponse("user could not be found"));
+        }
+    }
 
-        return ResponseEntity.ok(authService.login(request));
+    @AllArgsConstructor
+    @Data
+    public static class ErrorResponse {
+        private String error;
+
     }
 
 }
