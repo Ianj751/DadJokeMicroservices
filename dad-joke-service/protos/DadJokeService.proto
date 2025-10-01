@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package joke_service;
+
+service DadJokeService{
+    rpc GetDadJoke(DadJokeRequest) returns (DadJokeResponse){}
+}
+
+message DadJokeRequest{
+    string apiKey = 1;
+}
+
+message DadJokeResponse{
+    string setup = 1;
+    string punchline = 2;
+}
