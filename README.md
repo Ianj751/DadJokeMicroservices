@@ -15,4 +15,8 @@ Pulls a random dad joke from a sqlite DB, and returns it to the user if they hav
 4. Entry Point Forwards Request To Dad Joke Service w/ gRPC
 5. Entry Point Recieves Response and Forwards it back to client
 
+## Example Postman Screenshot
+<img width="1568" height="856" alt="image" src="https://github.com/user-attachments/assets/83f5a172-1c61-481d-a150-edd48174f8b0" />
+
+
 
