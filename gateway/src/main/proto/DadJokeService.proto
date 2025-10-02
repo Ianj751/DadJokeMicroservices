@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package joke_service;
+
 option java_package = "com.ianj751.gateway";
 option java_outer_classname = "DadJokeProto";
 option java_multiple_files = true;

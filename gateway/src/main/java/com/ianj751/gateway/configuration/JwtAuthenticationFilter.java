@@ -32,7 +32,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String jwt;
         final String username;
 
-        if (authHeader == null || !authHeader.startsWith("jwt")) {
+        if (authHeader == null || !authHeader.startsWith("Bearer")) {
+            // response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401
+            // response.getWriter().write("Missing or invalid Authorization header");
             filterChain.doFilter(request, response);
             return;
         }
