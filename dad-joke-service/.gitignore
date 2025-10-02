@@ -1,1 +1,5 @@
 target
+
+# Ignoring bc this requires an absolute path to the db and i dont want you knowing my file structure
+# sets DATABASE_URL 
+.env
